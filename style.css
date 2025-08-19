@@ -9,12 +9,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 h1 {
   font-size: 3rem;
   color: #fff;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
   animation: bounce 2s infinite;
 }
 
@@ -28,6 +29,35 @@ p {
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
+/* 🎈 Balloons floating */
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  width: 60px;
+  height: 80px;
+  background: red;
+  border-radius: 50% 50% 50% 50%;
+  animation: float 10s infinite ease-in-out;
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 60px;
+  background: #555;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-400px) rotate(10deg); }
+  100% { transform: translateY(0) rotate(-10deg); }
+}
+
+/* Bounce effect */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-15px); }
